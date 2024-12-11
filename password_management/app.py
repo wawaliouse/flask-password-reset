@@ -1,6 +1,6 @@
 from flask import Flask, send_from_directory
 import os
-from change_password import password_bp
+from password_management.change_password import password_bp
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Nécessaire pour les messages flash
