@@ -1,0 +1,205 @@
+/* Importation de la police utilisée par Qonto */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Styles généraux */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f5f7;
+    color: #1d1d1f;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Conteneur principal */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+}
+
+/* En-tête */
+.header h2 {
+    color: #3f51b5;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.input-group {
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #1d1d1f;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+}
+
+.input-group input:focus {
+    border-color: #3f51b5;
+    outline: none;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
+}
+
+/* Styles pour le champ de mot de passe avec l'œil */
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    width: 100%;
+    padding-right: 50px; /* Espace pour l'icône d'œil */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;             /* Positionne l'icône à droite */
+    top: 50%;                /* Centre verticalement */
+    transform: translateY(-5%); /* Décale légèrement vers le bas */
+    cursor: pointer;
+    font-size: 18px;
+    color: #6b7280;
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: #3f51b5;
+}
+
+/* Boutons */
+.btn {
+    background-color: #3f51b5;
+    color: #ffffff;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #bdbdbd;
+}
+
+/* Boîte d'information */
+.info-box {
+    background-color: #e8eaf6;
+    border-left: 5px solid #3f51b5;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: left;
+    color: #1d1d1f;
+}
+
+/* Styles pour la page de succès */
+.success-header h2 {
+    color: #4caf50;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.success-content {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Lien pour retour et connexion */
+.button-group a {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3f51b5;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-group a:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .btn,
+    .btn-secondary,
+    .button-group a {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .header h2,
+    .success-header h2 {
+        font-size: 22px;
+    }
+
+    .header p,
+    .success-content {
+        font-size: 14px;
+    }
+}
