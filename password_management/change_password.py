@@ -11,7 +11,7 @@ password_bp = Blueprint(
 )
 
 # Chemin vers le fichier JSON pour stocker les utilisateurs
-USER_DATA_FILE = os.path.join(os.path.dirname(__file__), '..', 'users.json')
+USER_DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'users.json')
 
 # Charger les utilisateurs depuis le fichier JSON
 def load_users():
