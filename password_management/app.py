@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, redirect, url_for
 import os
 from password_management.change_password import password_bp
 
@@ -12,6 +12,11 @@ def serve_css():
 
 # Enregistrer le blueprint pour le changement de mot de passe
 app.register_blueprint(password_bp)
+
+# Route de base pour rediriger vers la page de changement de mot de passe
+@app.route('/')
+def home():
+    return redirect(url_for('password_bp.change_password'))
 
 if __name__ == '__main__':
     app.run(debug=True)
