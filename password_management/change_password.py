@@ -6,8 +6,8 @@ import os
 password_bp = Blueprint(
     'password_bp',
     __name__,
-    template_folder='/Users/imlauto/Documents/isSecure/password_management',
-    static_folder='/Users/imlauto/Documents/isSecure/password_management/static'
+    template_folder=os.path.join(os.path.dirname(__file__), '.'),
+    static_folder=os.path.join(os.path.dirname(__file__), 'static')
 )
 
 # Chemin vers le fichier JSON pour stocker les utilisateurs
