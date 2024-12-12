@@ -3,8 +3,7 @@ from datetime import datetime
 import os  # Import nécessaire pour utiliser os.path
 
 # Import de l'instance `db` et `app` depuis app.py
-from app import db, app
-
+from password_management.app import db, app
 # Blueprint pour le changement de mot de passe
 password_bp = Blueprint(
     'password_bp',
