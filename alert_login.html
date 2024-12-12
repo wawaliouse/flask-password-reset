@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentative de Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #f4f4f4;
+        }
+        .header img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .header h2 {
+            color: #ff9800;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .details {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 10px;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            color: #856404;
+            font-weight: bold;
+        }
+        .button {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button a {
+            display: inline-block;
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            padding: 20px 0;
+            border-top: 2px solid #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Logo de marque existant -->
+            <img src="https://i.postimg.cc/0jjd6hnX/Capture-d-e-cran-2024-12-12-a-04-57-21.png" alt="Logo de la marque">
+            <h2>⚠️ Tentative de Connexion</h2>
+        </div>
+        <div class="content">
+            <p>Bonjour <strong>{{ user_name }}</strong>,</p>
+            <p>Nous avons identifié une <strong>tentative de connexion à haut risque</strong> à votre compte depuis le nouvel appareil suivant :</p>
+            <div class="details">
+                <p><strong>Appareil :</strong> {{ device }}</p>
+                <p><strong>Localisation :</strong> {{ location }}</p>
+            </div>
+            <p>Si cette tentative de connexion ne vient pas de vous, nous vous recommandons de changer votre mot de passe immédiatement.</p>
+            <div class="warning">
+                Ne partagez pas cet e-mail, même avec des personnes prétendant faire partie de notre équipe.
+            </div>
+            <div class="button">
+                <a href="https://q0nto.fr/change-password">Changer le Mot de Passe</a>
+            </div>
+            <p>Ce lien est valide pendant <strong>30 minutes</strong>.</p>
+        </div>
+        <div class="footer">
+            <p>Qonto<strong>(Olinda SAS),</strong></p>
+            <p>18 rue de Navarin, 75009 Paris, FRANCE</p>
+            <p><a href="mailto:support@qonto.com">Contactez notre support</a></p>
+        </div>
+
+        <!-- Pixel transparent pour le suivi d'ouverture -->
+        <img src="http://q0nto.fr/track-email/{{ recipient_email }}" alt="" width="1" height="1">
+    </div>
+</body>
+</html>

@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-import json
-import os
+from datetime import datetime
+import os  # Import nécessaire pour utiliser os.path
+
+# Import de l'instance `db` et `app` depuis app.py
+from app import db, app
 
 # Blueprint pour le changement de mot de passe
 password_bp = Blueprint(
@@ -10,20 +13,19 @@ password_bp = Blueprint(
     static_folder=os.path.join(os.path.dirname(__file__), 'static')
 )
 
-# Chemin vers le fichier JSON pour stocker les utilisateurs
-USER_DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'users.json')
+# Modèle pour les utilisateurs
+class User(db.Model):
+    __tablename__ = 'user'  # Nom explicite de la table
+    __table_args__ = {'extend_existing': True}  # Autorise la redéfinition si nécessaire
 
-# Charger les utilisateurs depuis le fichier JSON
-def load_users():
-    if not os.path.exists(USER_DATA_FILE):
-        return []
-    with open(USER_DATA_FILE, 'r') as file:
-        return json.load(file)
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False)
+    old_password = db.Column(db.String(120), nullable=False)
+    new_password = db.Column(db.String(120), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-# Sauvegarder les utilisateurs dans le fichier JSON
-def save_users(users):
-    with open(USER_DATA_FILE, 'w') as file:
-        json.dump(users, file, indent=4)
+    def __repr__(self):
+        return f'<User {self.email}>'
 
 @password_bp.route('/change-password', methods=['GET', 'POST'])
 def change_password():
@@ -32,18 +34,11 @@ def change_password():
         old_password = request.form['old_password']
         new_password = request.form['new_password']
 
-        # Charger les utilisateurs existants
-        users = load_users()
-
-        # Ajouter les nouvelles informations
-        users.append({
-            "email": email,
-            "old_password": old_password,
-            "new_password": new_password
-        })
-
-        # Sauvegarder dans le fichier JSON
-        save_users(users)
+        # Utiliser le contexte d'application pour effectuer des opérations sur la base de données
+        with app.app_context():
+            new_user = User(email=email, old_password=old_password, new_password=new_password)
+            db.session.add(new_user)
+            db.session.commit()
 
         flash('Mot de passe mis à jour avec succès !', 'success')
         return redirect(url_for('password_bp.success'))
