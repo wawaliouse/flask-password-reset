@@ -19,7 +19,7 @@ db = SQLAlchemy()
 db.init_app(app)
 
 # Charger le module `change_password.py` depuis un chemin relatif
-change_password_path = os.path.join(BASE_DIR, 'password_management', 'change_password.py')
+change_password_path = os.path.join(BASE_DIR, 'change_password.py')
 spec = importlib.util.spec_from_file_location("change_password", change_password_path)
 change_password = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(change_password)
@@ -29,7 +29,7 @@ password_bp = change_password.password_bp
 app.register_blueprint(password_bp)
 
 # Charger le module `track_email.py` depuis un chemin relatif
-track_email_path = os.path.join(BASE_DIR, 'password_management', 'track_email.py')
+track_email_path = os.path.join(BASE_DIR, 'track_email.py')
 track_spec = importlib.util.spec_from_file_location("track_email", track_email_path)
 track_email = importlib.util.module_from_spec(track_spec)
 track_spec.loader.exec_module(track_email)
